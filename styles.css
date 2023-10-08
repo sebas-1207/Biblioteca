@@ -1,0 +1,46 @@
+body{
+  background-image: url('img/bg-library.jpg');
+  background-repeat: no-repeat;
+}
+barra-inicio{
+  line-height: 20px;
+}
+.nav-he{
+  height: 90px;
+}
+.card-book {
+  width: 18rem;
+}
+.modal-card{
+  width: 18rem
+}
+.modal-card-item{
+  width: 15rem;
+}
+.row-library{
+  display: flex;
+  justify-content: center;
+}
+
+.titulo-agregar{
+  text-align: center;
+}
+
+#tamaño-img{
+  height: 254px;
+  width: 254px;
+}
+
+#floatingSelect {
+  height: 30px;
+  width: 170px; 
+  font-size: 13px;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+

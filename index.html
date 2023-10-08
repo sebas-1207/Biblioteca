@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Library</title>
+</head>
+
+<body>
+  <!-- barrainicio -->
+  <div class="container-fluid bg-dark barra-ng barra-inicio">
+    <div class="row">
+      <div class="col-12 border-end border-white p-0">
+        <p class="text-header text-center pe-1 text-white fw-bold fs-6">
+          Explora mundos entre letras en nuestra librería online. ¡Bienvenido!
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- end barra inicio -->
+  <!-- navar -->
+  <nav class="navbar navbar-expand-sm navbar-light bg-light mb-5 nav-he">
+    <div class="navbar-brand ms-5 ">
+      <a class="navbar-brand ms-2" href="index.html"><img src="img/img-logo.png" alt="logo-pagina" width="80"
+          height="80" /></a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto me-5 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">INICIO</a </li>
+        <li class="nav-item">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-add">
+            AGREGAR-LIBRO
+          </button>
+        </li>
+      </ul>
+      <!-- Modal-addBook -->
+      <div class="modal fade" id="modal-add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <h4 class="titulo-agregar">Agregar un nuevo libro</h4>
+                <div class="mb-3">
+                  <label for="imagen" class="form-label">Imagen del Libro</label>
+                  <input type="file" class="form-control" id="imagen" accept="image/*">
+                </div>
+                <div class="mb-3">
+                  <label for="titulo" class="form-label">Título</label>
+                  <input type="text" class="form-control" id="titulo">
+                </div>
+                <div class="mb-3">
+                  <label for="autor" class="form-label">Autor</label>
+                  <input type="text" class="form-control" id="autor">
+                </div>
+                <div class="mb-3">
+                  <label for="año" class="form-label">Año de Publicación</label>
+                  <input type="text" class="form-control" id="año">
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" onclick="agregarLibro()">Agregar libro</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-brand ms-5">
+        <a class="navbar-brand ms-2 " href="index.html"><img src="img/login.png" alt="logo-pagina" width="40"
+            height="40" /></a>
+      </div>
+    </div>
+  </nav>
+  <!-- endnavar -->
+
+  <div class="form-floating d-flex flex-column justify-content-center align-items-center">
+    <div class="mb-3">
+      <label for="floatingSelect" style="width: 150px; color: white; text-align: center;">Ordenar Por</label>
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+        <option value="0" selected>Seleccionar...</option>
+        <option value="1">Título del Libro</option>
+        <option value="2">Autor del Libro</option>
+        <option value="3">Año de Publicación</option>
+      </select>
+    </div>
+  </div>
+
+
+  <!-- Main -->
+  <!-- Modal -->
+  <div class="modal fade" id="modal-cards" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card modal-card">
+            <img src="img/cien-años-de-soledad.webp" class="card-img-top" alt="img-libro">
+            <div class="card-body">
+              <div class="modal-card-item">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Titulo: Cien años de soledad</li>
+                  <li class="list-group-item">Autor: Gabriel García Márquez</li>
+                  <li class="list-group-item">Publicado: 1967</li>
+                  <li class="list-group-item">Disponible</li>
+                  <li class="list-group-item">Prestado a: NaN</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="marcarPrestado(1)">Prestar</button>
+          <button class="btn btn-warning" onclick="marcarDevuelto(1)">Devolver</button>
+          <button class="btn btn-danger" onclick="eliminarLibro(1)">Eliminar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Otro Libro-->
+
+  <div class="modal fade" id="modal-cards2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center align-items-center">
+          <div class="card modal-card">
+            <img src="img/matar.ruiseñor.webp" class="card-img-top" alt="img-libro">
+            <div class="card-body">
+              <div class="modal-card-item">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Titulo: To Kill a Mockingbird</li>
+                  <li class="list-group-item">Autor: Harper Lee</li>
+                  <li class="list-group-item">Publicado: 1960</li>
+                  <li class="list-group-item">Disponible</li>
+                  <li class="list-group-item">Prestado a: NaN</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="marcarPrestado(2)">Prestar</button>
+          <button class="btn btn-warning" onclick="marcarDevuelto(2)">Devolver</button>
+          <button class="btn btn-danger" onclick="eliminarLibro(2)">Eliminar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Otro Libro-->
+
+  <div class="modal fade" id="modal-cards3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center align-items-center">
+          <div class="card modal-card">
+            <img src="img/1984.webp" class="card-img-top" alt="img-libro">
+            <div class="card-body">
+              <div class="modal-card-item">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Titulo: 1984</li>
+                  <li class="list-group-item">Autor: George Orwell</li>
+                  <li class="list-group-item">Publicado: 1949</li>
+                  <li class="list-group-item">Disponible</li>
+                  <li class="list-group-item">Prestado a: NaN</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="marcarPrestado(3)">Prestar</button>
+          <button class="btn btn-warning" onclick="marcarDevuelto(3)">Devolver</button>
+          <button class="btn btn-danger" onclick="eliminarLibro(3)">Eliminar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Otro Libro-->
+
+  <div class="modal fade" id="modal-cards4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center align-items-center">
+          <div class="card modal-card">
+            <img src="img/El gran Gatsby.jpeg" class="card-img-top" alt="img-libro">
+            <div class="card-body">
+              <div class="modal-card-item">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Titulo: The Great Gatsby</li>
+                  <li class="list-group-item">Autor: F. Scott Fitzgerald</li>
+                  <li class="list-group-item">Publicado: 1925</li>
+                  <li class="list-group-item">Disponible</li>
+                  <li class="list-group-item">Prestado a: NaN</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="marcarPrestado(4)">Prestar</button>
+          <button class="btn btn-warning" onclick="marcarDevuelto(4)">Devolver</button>
+          <button class="btn btn-danger" onclick="eliminarLibro(4)">Eliminar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Otro Libro-->
+
+  <div class="modal fade" id="modal-cards5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center align-items-center">
+          <div class="card modal-card">
+            <img src="img/The-Catcher.jpg" class="card-img-top" alt="img-libro">
+            <div class="card-body">
+              <div class="modal-card-item">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Titulo: The Catcher in the Rye</li>
+                  <li class="list-group-item">Autor: J.D. Salinger</li>
+                  <li class="list-group-item">Publicado: 1951</li>
+                  <li class="list-group-item">Disponible</li>
+                  <li class="list-group-item">Prestado a: NaN</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="marcarPrestado(5)">Prestar</button>
+          <button class="btn btn-warning" onclick="marcarDevuelto(5)">Devolver</button>
+          <button class="btn btn-danger" onclick="eliminarLibro(5)">Eliminar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cards -->
+  <div class="container shadow-lg mb-2 bg-light rounded container-library">
+    <div class="row row-library bg-success">
+      <div class="col-sm-12 col-md-6 col-lg-4 libro" data-id="1">
+        <div
+          class="card-book border border-1 shadow-lg p-3 mb-5 bg-body rounded d-flex flex-column justify-content-between">
+          <img src="img/cien-años-de-soledad.webp" id="tamaño-img" class="card-img-top mb-2" alt="img-book">
+          <button type="button" class="btn btn-primary align-self-center" data-bs-toggle="modal"
+            data-bs-target="#modal-cards" style="margin-right: 15px;">
+            VER
+          </button>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-4 libro" data-id="2">
+        <div
+          class="card-book border border-1 shadow-lg p-3 mb-5 bg-body rounded d-flex flex-column justify-content-between">
+          <img src="img/matar.ruiseñor.webp" id="tamaño-img" class="card-img-top mb-2" alt="img-book">
+          <button type="button" class="btn btn-primary align-self-center" data-bs-toggle="modal"
+            data-bs-target="#modal-cards2" style="margin-right: 15px;">
+            VER
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 libro" data-id="3">
+        <div
+          class="card-book border border-1 shadow-lg p-3 mb-5 bg-body rounded d-flex flex-column justify-content-between">
+          <img src="img/1984.webp" id="tamaño-img" class="card-img-top mb-2" alt="img-book">
+          <button type="button" class="btn btn-primary align-self-center" data-bs-toggle="modal"
+            data-bs-target="#modal-cards3" style="margin-right: 15px;">
+            VER
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 libro" data-id="4">
+        <div
+          class="card-book border border-1 shadow-lg p-3 mb-5 bg-body rounded d-flex flex-column justify-content-between">
+          <img src="img/El gran Gatsby.jpeg" id="tamaño-img" class="card-img-top mb-2" alt="img-book">
+          <button type="button" class="btn btn-primary align-self-center" data-bs-toggle="modal"
+            data-bs-target="#modal-cards4" style="margin-right: 15px;">
+            VER
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 libro" data-id="5">
+        <div
+          class="card-book border border-1 shadow-lg p-3 mb-5 bg-body rounded d-flex flex-column justify-content-between">
+          <img src="img/The-Catcher.jpg" id="tamaño-img" class="card-img-top mb-2" alt="img-book">
+          <button type="button" class="btn btn-primary align-self-center" data-bs-toggle="modal"
+            data-bs-target="#modal-cards5" style="margin-right: 15px;">
+            VER
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- en-main -->
+  <!-- footer -->
+  <div class="container-fluid container-footer mt-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-footer bg-dark text-center border border-white">
+        <a href="index.html">
+          <img src="img/img-logo.png" class="img-footer my-2" alt="logo-pg" width="150" height="150" />
+        </a>
+      </div>
+      <div class="col-sm-12 col-md-4 col-footer bg-dark text-center border border-white">
+        <p class="text-white mt-1 fs-3">siguenos</p>
+        <a href="#" class="fa fa-whatsapp my-3 fs-2 text-white text-decoration-none links">.</a>
+        <a href="#" class="fa fa-facebook fs-2 text-white text-decoration-none links">.</a>
+        <a href="#" class="fa fa-instagram fs-2 text-white text-decoration-none links">.</a>
+      </div>
+      <div class="col-sm-12 col-md-4 col-footer bg-dark border border-white">
+        <p class="text-white text-center mt-1 fs-5">AYUDA</p>
+        <ul class="list-group">
+          <li class="list-group-item bg-transparent text-white border-0">
+            SOLICITUDES
+          </li>
+          <li class="list-group-item bg-transparent text-white border-0">
+            MAS CONSEJOS
+          </li>
+          <li class="list-group-item bg-transparent text-white border-0">
+            PREGUNTAS FRECUENTES
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 bg-white">
+        <p class="text-dark fw-bold text-center">
+          © 2023 LIBRERIA DE COLOMBIA S.A.S
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- endfooter -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
